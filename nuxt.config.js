@@ -3,6 +3,9 @@ import colors from 'vuetify/es5/util/colors'
 const { FIRE_AUTH_API_KEY } = process.env
 
 export default {
+  vue: {
+    devtools: true,
+  },
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     titleTemplate: '%s - lab-equipment-list',
