@@ -32,3 +32,9 @@ export const actions = {
     commit('updateIdToken', null)
   },
 }
+
+export const getters = {
+  idToken(state) {
+    return state.idToken
+  },
+}

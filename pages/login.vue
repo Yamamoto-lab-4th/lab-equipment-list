@@ -1,16 +1,9 @@
 <template>
   <div>
     <div class="row">
-      <div id="title" class="col s12">Login</div>
-    </div>
-    <div class="row">
-      <div class="input-field col s6">
-        <input id="firstName" type="text" class="validate" />
-        <label for="firstName">First Name</label>
-      </div>
-      <div class="input-field col s6">
-        <input id="lastName" type="text" class="validate" />
-        <label for="lastName">Last Name</label>
+      <div class="input-field col s12">
+        <input id="email" v-model="email" type="email" class="validate" />
+        <label for="email">Email</label>
       </div>
     </div>
     <div class="row">
@@ -22,12 +15,6 @@
           class="validate"
         />
         <label for="password">Password</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="email" v-model="email" type="email" class="validate" />
-        <label for="email">Email</label>
       </div>
     </div>
     <div class="row">
@@ -51,13 +38,19 @@ input {
 </style>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   data() {
     return {
-      password: '',
       email: '',
+      password: '',
     }
+  },
+  computed: {
+    ...mapGetters('auth', ['idToken']),
+    isAuthenticated() {
+      return this.idToken != null
+    },
   },
   methods: {
     ...mapActions('auth', ['signIn']),
